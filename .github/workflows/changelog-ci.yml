@@ -14,5 +14,11 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
 
-      - name: Run Changelog CI
+      - name: Generate changelog
         uses: saadmk11/changelog-ci@v1.1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          changelog_filename: 'CHANGELOG.md'
+          release_version: '${{ github.ref_name }}' # Uses the branch name or tag for the version
+          committer_username: 'github-actions[bot]' # Optional, set a committer username
+          committer_email: 'github-actions[bot]@users.noreply.github.com' # Optional, set a committer email
